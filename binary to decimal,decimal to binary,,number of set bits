@@ -1,0 +1,60 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int countbits(int n)
+{
+    return __builtin_popcount(n);
+}
+int countbits2(int n)
+{
+    int count=0;
+    while(n>0)
+    {
+        count++;
+        n=n&(n-1);
+    }
+    return count;
+}
+int binary(string &binary)
+{
+    int n=binary.size();
+    int ans=0;
+    for(int i=n-1;i>=0;i--)
+    {
+        char ch=binary[i];
+        int num=ch-'0';
+        ans=ans+num*(1<<(n-i-1));
+    }
+    return ans;
+}
+string decimal(int num)
+{
+  string result="";
+  int count=0;
+  while(num>0)
+  {
+      if(num%2==0)
+      {
+          result="0"+result;
+      }
+      else
+      {
+          result="1"+result;
+          count++;
+      }
+      num=num/2;
+  }
+  cout<<count<<endl;
+  return result;
+}
+
+int main() {
+    string str="0011010";
+    cout<<binary(str)<<"\n";
+   cout<<countbits(453)<<"\n";
+   cout<<countbits2(453)<<"\n";
+   cout<<decimal(453);
+    
+
+    return 0;
+}
