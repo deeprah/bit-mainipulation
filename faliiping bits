@@ -1,0 +1,70 @@
+/ Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int binary(string &binary)
+{
+    int n=binary.size();
+    int ans=0;
+      for(int i=n-1;i>=0;i--)
+      {
+          char ch=binary[i];
+          int num=ch-'0';
+          ans=ans+num*(1<<(n-i-1));
+      }
+      return ans;
+}
+string decimal(int num)
+{
+    string result="";
+    int count=0;
+    while(num>0)
+    {
+        if(num%2==0)
+        {
+            result="0"+result;
+        }
+        else
+        {
+            result="1"+result;
+            count++;
+        }
+        num=num/2;
+    }
+    cout<<count<<endl;
+    return result;
+}
+int bits(int num)
+{
+    int count=0;
+    int temp;
+    while(num>0)
+    {
+        count++;
+        temp=num;
+        num=(num & (num-1));
+    }
+    cout<<temp<<endl;
+    return count;
+}
+int maxof2(int n)
+{
+    int original=n;
+  n=n | (n>>1);
+  n=n | (n>>2);
+  n=n | (n>>4);
+  n=n | (n>>8);
+  n=n | (n>>16);
+  return (n ^ original);
+  
+}
+
+int main() {
+    // Write C++ code here
+    string str="01101";
+    cout<<binary(str)<<"\n";
+    cout<<decimal(13)<<endl;
+    cout<<bits(453)<<endl;
+    cout<<maxof2(5);
+
+    return 0;
+}
