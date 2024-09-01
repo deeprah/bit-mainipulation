@@ -1,0 +1,24 @@
+/ Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cout<<"enter the value of n"<<endl;
+    cin>>n;
+    int org=n;
+    if((n &(n-1))==0)
+    {
+        cout<<0;
+        return 0;
+    }
+    int p=0;
+    while(n>0)
+    {
+        n/=2;
+        p++;
+    }
+    int nearest=1<<p;
+    cout<<nearest-org<<endl;
+
+    return 0;
+}
